@@ -1,38 +1,26 @@
-\chapter{Теоретические вопросы}
-\begin{enumerate}[wide=0pt]
-	\item \textit{Элементы языка: определение, синтаксис, представление в памяти.} 
-	
-	
-Лисп --- функциональный язык программирования, данные и программы в котором представляются системами линейных списков символов. Программы в Лиспе понимают как применение функции к ее аргументам (вызов функции). Аргументом функции может быть любая форма Lisp.
-	\item \textit{Особенности языка Lisp. Структура программы. Символ апостроф.} \\
-	
-	Язык поддерживает функциональную методологию. Является бестиповым регистронезависимым языком.\\
-	
-	Функциональная программа состоит из набора взаимосвязанных функций. Каждая функция определяется выражением, которое задает правило вычисления её значения в зависимости от значений ее аргументов и которое является композицией встроенных функций, а также других функций, описанных в программе. \\
-	
-	Quote, или оператор цитирования --- это специальные оператор, то есть, у него есть собственное правило вычисления: quote берет один аргумент и возвращает его текстовую запись. 
-	
-	\item \textit{Базис языка Lisp. Ядро языка.} \\
-	Базис языка Lisp:
-	\begin{enumerate}
-		\item атомы и структуры (представляющиеся бинарными узлами);
-		\item несколько базовых функций и функционалов: встроенные --- примитивные функции (atom, eq, cons, car, cdr); специальные функции и функционалы (quote, cond, lambda, eval, apply, funcall).
-	\end{enumerate}
-	Ядро языка --- набор частоиспользуемых функций, расширяющих базис. Например, функция list или defun. 
-\end{enumerate}
 \chapter{Практические задания}
 
 \begin{enumerate}[wide=0pt]
 \item \textit{Представить следующие списки в виде списочных ячеек:}
-\begin{tasks}[label=\arabic*), item-indent=3pt, after-item-skip=1pt](2)
-	\task \lstinline {'(open close halph)}
-	\task \lstinline {'((open1)(close2)(halph3))}
-	\task \lstinline {'((one) for all (and (me (for you))))}
-	\task \lstinline {'((TOOL) (call))}
-	\task \lstinline {'((TOOL1)((call2))((shell)))}
-	\task \lstinline {'(((TOOL) (call)) ((shell)))}
-\end{tasks}
-Решение представлено на отдельном листе и приложено к отчету.
+\begin{enumerate}[label=\arabic*)]
+	\item \lstinline {'(open close halph)}
+	\item \lstinline {'((open1)(close2)(halph3))}
+	\item \lstinline {'((one) for all (and (me (for you))))}
+	\item \lstinline {'((TOOL) (call))}
+	\item \lstinline {'((TOOL1)((call2))((shell)))}
+	\item  {'(((TOOL) (call)) ((shell)))}
+\end{enumerate}
+
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=1\linewidth]{assets/task1/1.pdf}
+	\caption{Списочные ячейки. Задание 1}
+\end{figure}
+\FloatBarrier
+
+
+
 \item  \textit{Используя только функции} \texttt{CAR} и \texttt{CDR} \textit{написать выражения, возвращающие:}
 \begin{tasks}[label=\arabic*), item-indent=3pt, after-item-skip=1pt](3)
 	\task второй; \task третий; \task четвертый элементы \\ заданного списка.
@@ -59,43 +47,43 @@
 	\task \lstinline{(GHI)}
 \end{tasks}
 \item Напишите результат выражений и объясните как он получен:
-\begin{tasks}[label=\arabic*), item-indent=3pt, label-offset=10pt, after-item-skip=1pt](3)
-	\task \lstinline{(list 'Fred 'and 'Wilma)}
-	\task \lstinline{(list 'Fred '(and Wilma))}
-	\task \lstinline{(cons Nil Nil)}
-	\task \lstinline{(cons T Nil)}
-	\task \lstinline{(cons Nil T)}
-	\task \lstinline{(list Nil)}
-	\task \lstinline{(list Nil)}
-	\task \lstinline{(cons '(T) Nil)}
-	\task \lstinline{(list '(one two) '(free temp))}
-	\task \lstinline{(cons 'Fred '(and Wilma))}
-	\task \lstinline{(cons 'Fred '(Wilma))}
-	\task \lstinline{(list Nil Nil)}
-	\task \lstinline{(list Nil T)}
-	\task \lstinline{(cons T (list Nil))}
-	\task \lstinline{(list '(T) Nil)}
-	\task \lstinline{(cons '(one two) '(free temp))}
-\end{tasks}
+\begin{enumerate}[label=\arabic*)]
+	\item \lstinline{(list 'Fred 'and 'Wilma)}
+	\item \lstinline{(list 'Fred '(and Wilma))}
+	\item \lstinline{(cons Nil Nil)}
+	\item \lstinline{(cons T Nil)}
+	\item \lstinline{(cons Nil T)}
+	\item \lstinline{(list Nil)}
+	\item \lstinline{(cons '(T) Nil)}
+	\item \lstinline{(list '(one two) '(free temp))}
+	\item \lstinline{(cons 'Fred '(and Wilma))}
+	\item \lstinline{(cons 'Fred '(Wilma))}
+	\item \lstinline{(list Nil Nil)}
+	\item \lstinline{(list T Nil)}
+	\item \lstinline{(list Nil T)}
+	\item \lstinline{(cons T (list Nil))}
+	\item \lstinline{(list '(T) Nil)}
+	\item \lstinline{(cons '(one two) '(free temp))}
+\end{enumerate}
 Решения:
-\begin{tasks}[label=\arabic*), item-indent=3pt, label-offset=10pt, after-item-skip=1pt](3)
-	\task \lstinline{(FRED AND WILMA)}
-	\task \lstinline{(FRED (AND WILMA))}
-	\task \lstinline{(Nil)}
-	\task \lstinline{(T)}
-	\task \lstinline{(NIL.T)}
-	\task \lstinline{(NIL)}
-	\task \lstinline{(list Nil)}
-	\task \lstinline{((T))}
-	\task \lstinline{((ONE TWO) (FREE TEMP))}
-	\task \lstinline{(FRED AND WILMA)}
-	\task \lstinline{(FRED WILMA)}
-	\task \lstinline{(NIL NIL)}
-	\task \lstinline{(NIL T)}
-	\task \lstinline{(T NIL)}
-	\task \lstinline{((T) Nil)}
-	\task \lstinline{((ONE TWO) FREE TEMP)}
-\end{tasks}
+\begin{enumerate}[label=\arabic*)]
+	\item \lstinline{(FRED AND WILMA)}
+	\item \lstinline{(FRED (AND WILMA))}
+	\item \lstinline{(Nil)}
+	\item \lstinline{(T)}
+	\item \lstinline{(NIL.T)}
+	\item \lstinline{(NIL)}
+	\item \lstinline{((T))}
+	\item \lstinline{((ONE TWO) (FREE TEMP))}
+	\item \lstinline{(FRED AND WILMA)}
+	\item \lstinline{(FRED WILMA)}
+	\item \lstinline{(NIL NIL)}
+	\item \lstinline{(T Nil)}
+	\item \lstinline{(NIL T)}
+	\item \lstinline{(T NIL)}
+	\item \lstinline{((T) Nil)}
+	\item \lstinline{((ONE TWO) FREE TEMP)}
+\end{enumerate}
 \item \textit{Написать лямбда-выражение и соответствующую функцию:}
 \begin{tasks}[label=\arabic*), item-indent=3pt, label-offset=10pt, after-item-skip=1pt](1)
 	\task Написать функцию \lstinline{f(ar1 ar2 ar3 ar4)}, возвращающую \lstinline{((ar1 ar2) (ar3 ar4))}.
@@ -130,5 +118,13 @@
 (lambda (ar1)(list (cons ar1 nil)))
 \end{lstlisting}
 \end{enumerate}
-Представление в виде списочных ячеек выполнено на отдельном листе и приложено к отчету.
+
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{assets/task1/2.pdf}
+	\caption{Списочные ячейки. Задание 2}
+\end{figure}
+\FloatBarrier
+
 \end{enumerate}
