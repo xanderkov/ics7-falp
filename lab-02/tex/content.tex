@@ -8,7 +8,7 @@
 	\item \lstinline {(equal (* 4 7) 21)}
 	\item \lstinline {(equal (* 2 3) (+ 7 2))}
 	\item \lstinline {(equal (- 7 3) (* 3 2))}
-	\item \lstinline {(equal (abs (- 2 4)) 3))}
+	\item \lstinline {(equal (abs (- 2 4)) 3)}
 	
 \end{enumerate}
 
@@ -16,12 +16,103 @@
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=1\linewidth]{assets/task1/1.pdf}
-	\caption{Списочные ячейки. Задание 1}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=1\linewidth]{assets/task1/2.pdf}
+\end{figure}
+\FloatBarrier
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=1\linewidth]{assets/task1/3.pdf}
 \end{figure}
 \FloatBarrier
 
 
 
 \item  \textit{Написать функцию, вычисляющую гипотенузу прямоугольного}
+
+\begin{lstlisting}
+	(
+    defun calc_hyp(a b) (
+        sqrt (
+                + 
+                    (* a a)
+                    (* b b) 
+            )
+    )
+	)
+
+\end{lstlisting}
+
+
+\item \textit{Каковы результаты вычисления следующих выражений?
+(объяснить возможную ошибку и варианты ее устранен6ия)}
+
+\begin{enumerate}[label=\arabic*)]
+	\item \lstinline {(list 'a c)}
+	\item \lstinline {(cons 'a (b c))}
+	\item \lstinline {(cons 'a '(b c))}
+	\item \lstinline {(caddr (1 2 3 4 5))}
+	\item \lstinline {(cons 'a 'b 'c)}
+	\item \lstinline {(list 'a (b c))}
+	\item \lstinline {(list a '(b c))}
+	\item \lstinline {(list (+ 1 '(length '(1 2 3))))}
+	
+\end{enumerate}
+
+\item \textit{Написать функцию longer\_then от двух списков-аргументов, 
+которая возвращает T, если первый аргумент имеет большую длину.}
+
+
+
+\item \textit{Каковы результаты вычисления следующих выражений?}
+
+\begin{enumerate}[label=\arabic*)]
+	\item \lstinline {(cons 3 (list 5 6))}
+	\item \lstinline {(list 3 'from 9 'lives (- 9 3))}
+	\item \lstinline {(+ (length for 2 too)) (car '(21 22 23)))}
+	\item \lstinline {(cdr '(cons is short for ans))}
+	\item \lstinline {(car (list one two))}
+	\item \lstinline {(cons 3 '(list 5 6))}
+	\item \lstinline {(car (list 'one 'two))}
+
+	
+\end{enumerate}
+
+\item \textit{Дана функция (defun mystery (x) (list (second x) (first x))).
+Какие результаты вычисления следующих выражений? }
+
+
+\begin{enumerate}[label=\arabic*)]
+	\item \lstinline {(mystery (one two))}
+	\item \lstinline {(mystery (last one two))}
+	\item \lstinline {(mystery free)}
+	\item \lstinline {(mystery one 'two))}
+
+	
+\end{enumerate}
+
+\item \textit{Написать функцию, которая переводит температуру в системе Фаренгейта
+температуру по Цельсию (defum f-to-c (temp)…).
+Формулы: 	c = 5/9*(f-320); 	f= 9/5*c+32.0. 
+Как бы назывался роман Р.Брэдбери "+451 по Фаренгейту" в системе по Цельсию?}
+
+\item \textit{Что получится при вычисления каждого из выражений?}
+
+
+\begin{enumerate}[label=\arabic*)]
+	\item \lstinline {(list 'cons t NIL)}
+	\item \lstinline {(eval (eval (list 'cons t NIL)))}
+	\item \lstinline {(apply #cons "(t NIL))}
+	\item \lstinline {(list 'eval NIL)}
+	\item \lstinline {(eval (list 'cons t NIL))}
+	\item \lstinline {(eval NIL)}
+	\item \lstinline {(eval (list 'eval NIL))}
+
+	
+\end{enumerate}
 
 \end{enumerate}
