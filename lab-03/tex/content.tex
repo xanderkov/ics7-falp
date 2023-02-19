@@ -1,0 +1,63 @@
+\chapter{Практические задания}
+
+\begin{enumerate}[wide=0pt]
+
+	\item \textit{Написать функцию, которая принимает целое число и возвращает первое
+	четное число, не меньшее аргумента.}
+
+		\begin{lstlisting}
+			(
+			defun calc_hyp(a b) (
+				sqrt (
+						+ 
+							(* a a)
+							(* b b) 
+					)
+			)
+			)
+
+		\end{lstlisting}
+
+
+	\item  \textit{Написать функцию, которая принимает число и возвращает число
+	того же знака, но с модулем на 1 больше модуля аргумента.}
+
+	\item  \textit{Написать функцию, которая принимает два числа и возвращает спи-
+	сок из этих чисел, расположенный по возрастанию.}
+
+	\item  \textit{Написать функцию, которая принимает три числа и возвращает Т
+	только тогда, когда первое число расположено между вторым и третьим.}
+
+	\item  \textit{Каков результат вычисления следующих выражений?}
+	
+		\begin{enumerate}[label=\arabic*)]
+			\item (and 'fee 'fie 'foe)
+			\item (or nil 'fie 'foe)
+			\item (and (equal 'abc 'abc) 'yes)
+			\item (or 'fee 'fie 'foe)
+			\item (and nil 'fie 'foe)
+			\item (or (equal 'abc 'abc) 'yes)
+		\end{enumerate}
+
+	\item  \textit{Написать предикат, который принимает два числа-аргумента и 
+	возвращает Т, если первое число не меньше второго.}
+
+	\item  \textit{Какой из следующих двух вариантов предиката ошибочен и почему?}
+	
+		\begin{enumerate}[label=\arabic*)]
+			\item (defun pred1 (x))
+			\item (and (numberp x) (plusp x)))
+			\item (defun pred2 (x))
+			\item (and (plusp x)(numberp x)))
+		\end{enumerate}
+
+	\item  \textit{Решить задачу 4, используя для ее решения конструкции IF, COND,
+	AND/OR.}
+
+	\item  \textit{Переписать функцию how-alike, приведенную в лекции и использующую
+	COND, используя только конструкции IF, AND/OR.
+	AND/OR:}
+
+
+
+\end{enumerate}
