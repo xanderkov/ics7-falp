@@ -100,23 +100,23 @@
 	\item  \textit{Решить задачу 4, используя для ее решения конструкции IF, COND,
 	AND/OR.}
 	
-
 	\begin{lstlisting}
-		(defun is-first-between (first second third)
-			(
-				cond ( 
-						(and (> first second) (< first third))
-						(and (> first third) (< first second))
-					t
-					)
-					(t nil)
-					
-				
-			)
-		)
+	(defun x-from-y-to-z (x y z)
+	(if (< y x)
+		(if (< x z)
+			T Nil)
+		Nil))
 	\end{lstlisting}
 
+	\begin{lstlisting}
+	(defun x-from-y-to-z (x y z)
+		(cond ((< y x) (cond ((< x z) T) (T Nil))) (T Nil)))
+	\end{lstlisting}
 
+	\begin{lstlisting}
+	(defun x-from-y-to-z (x y z)
+		(and (< y x) (< x z)))
+	\end{lstlisting}
 
 
 	\item  \textit{Переписать функцию how-alike, приведенную в лекции и использующую
@@ -124,35 +124,39 @@
 	AND/OR:}
 
 	\begin{lstlisting}
-	(defun is-betweenp(f s th)
-		(or (and (> f s) (< f th)) (and (> f th) (< f s))))
+	(defun how_alike (x y)
+    (cond ((or (= x y) (equal x y)) 'the_same)
+        ((and (oddp x) (oddp y)) 'both_odd)
+        ((and (evenp x) (evenp y)) 'both_even)
+        (T 'difference)
+	))
 	\end{lstlisting}
 
-	COND:
 
 	\begin{lstlisting}
-	(defun is-between-cond(f s th)
-		(cond ((> f s) (cond ((< f th))
-							(t nil)))
-			((> f th) t)))
+		(defun how_alike (x y)
+		(if (if (= x y)
+				(equal x y))
+			'the_same
+			(if (if (oddp x)
+				(oddp y))
+			'both_odd
+			(if (if (evenp x)
+				(evenp y))
+			'both_even
+			'difference
+		))))
 	\end{lstlisting}
 
-	\clearpage
-
-	IF:
 
 	\begin{lstlisting}
-	(defun is-between-if (f s th)
-		(if (> f s)
-		(if (< f th)
-			t
-			(if (< f s)
-			(if (> f th)
-				t
-				nil)
-			nil))
-		(if (> f th)
-			t)))
+		(defun how_alike (x y)
+		(or
+			(and (= x y) (equal x y) 'the_same)
+			(and (oddp x) (oddp y) 'both_odd)
+			(and (evenp x) (evenp y) 'both_even)
+			'difference
+		))
 	\end{lstlisting}
 
 

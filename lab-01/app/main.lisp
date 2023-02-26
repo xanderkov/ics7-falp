@@ -1,6 +1,6 @@
 (print(
-    cadadr `(
-        (blue cube) (red pyramid)
-        )
+    cadr(
+        (blue black) (cock)
+    )
     )
 )
