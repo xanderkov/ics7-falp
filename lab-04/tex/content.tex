@@ -1,0 +1,164 @@
+\chapter{Практические задания}
+
+\begin{enumerate}[wide=0pt]
+
+	\item \textit{Написать функцию, которая принимает целое число и возвращает первое
+	четное число, не меньшее аргумента.}
+
+		\begin{lstlisting}
+			(defun make-even (x)
+				(
+					if (evenp x)
+					x
+					(if (> x 0)
+						(- x 1)
+						(+ x 1)
+					)
+				)
+			)
+		\end{lstlisting}
+
+
+	\item  \textit{Написать функцию, которая принимает число и возвращает число
+	того же знака, но с модулем на 1 больше модуля аргумента.}
+
+	\begin{lstlisting}
+		(defun calc-plus-one (x)
+			(
+				if (< x 0)
+					(- x 1)
+					(+ x 1)
+				
+			)
+		)
+	\end{lstlisting}
+
+	\item  \textit{Написать функцию, которая принимает два числа и возвращает спи-
+	сок из этих чисел, расположенный по возрастанию.}
+
+	\begin{lstlisting}
+		(defun make-two-list (a b)
+			(
+				if (< a b)
+					(list a b)
+					(list b a)
+				
+			)
+		)
+	\end{lstlisting}
+
+	\item  \textit{Написать функцию, которая принимает три числа и возвращает Т
+	только тогда, когда первое число расположено между вторым и третьим.}
+
+	\begin{lstlisting}
+		(defun is-first-between (first second third)
+			(
+				if (or 
+						(and (> first second) (< first third))
+						(and (> first third) (< first second))
+				   )
+					t
+					nil
+				
+			)
+		)
+	\end{lstlisting}
+
+	\item  \textit{Каков результат вычисления следующих выражений?}
+	
+		\begin{enumerate}[label=\arabic*)]
+			\item (and 'fee 'fie 'foe) --- foe
+			\item (or nil 'fie 'foe) --- fie
+			\item (and (equal 'abc 'abc) 'yes) --- yes
+			\item (or 'fee 'fie 'foe) --- fee
+			\item (and nil 'fie 'foe) --- Nil
+			\item (or (equal 'abc 'abc) 'yes) --- T
+		\end{enumerate}
+
+	\item  \textit{Написать предикат, который принимает два числа-аргумента и 
+	возвращает Т, если первое число не меньше второго.}
+
+	\begin{lstlisting}
+		(defun not-less (x y)
+			(
+				>= x y
+			)
+		)
+	\end{lstlisting}
+
+	\item  \textit{Какой из следующих двух вариантов предиката ошибочен и почему?}
+	
+		\begin{enumerate}[label=\arabic*)]
+			\item (defun pred1 (x) (and (numberp x) (plusp x)))
+			\item (defun pred2 (x) (and (plusp x)(numberp x)))
+		\end{enumerate}
+
+		Ответ: ошибочен вариант 2. Так как and вычисляет аргументы до тех пор,
+		пока не будет ясно, какой ответ надо вернуть. pred2 при первой проверке
+		вернет NIL и завршит работы не вызывая plusp.
+
+	\item  \textit{Решить задачу 4, используя для ее решения конструкции IF, COND,
+	AND/OR.}
+	
+	\begin{lstlisting}
+	(defun x-from-y-to-z (x y z)
+	(if (< y x)
+		(if (< x z)
+			T Nil)
+		Nil))
+	\end{lstlisting}
+
+	\begin{lstlisting}
+	(defun x-from-y-to-z (x y z)
+		(cond ((< y x) (cond ((< x z) T) (T Nil))) (T Nil)))
+	\end{lstlisting}
+
+	\begin{lstlisting}
+	(defun x-from-y-to-z (x y z)
+		(and (< y x) (< x z)))
+	\end{lstlisting}
+
+
+	\item  \textit{Переписать функцию how-alike, приведенную в лекции и использующую
+	COND, используя только конструкции IF, AND/OR.
+	AND/OR:}
+
+	\begin{lstlisting}
+	(defun how_alike (x y)
+    (cond ((or (= x y) (equal x y)) 'the_same)
+        ((and (oddp x) (oddp y)) 'both_odd)
+        ((and (evenp x) (evenp y)) 'both_even)
+        (T 'difference)
+	))
+	\end{lstlisting}
+
+
+	\begin{lstlisting}
+		(defun how_alike (x y)
+		(if (if (= x y)
+				(equal x y))
+			'the_same
+			(if (if (oddp x)
+				(oddp y))
+			'both_odd
+			(if (if (evenp x)
+				(evenp y))
+			'both_even
+			'difference
+		))))
+	\end{lstlisting}
+
+
+	\begin{lstlisting}
+		(defun how_alike (x y)
+		(or
+			(and (= x y) (equal x y) 'the_same)
+			(and (oddp x) (oddp y) 'both_odd)
+			(and (evenp x) (evenp y) 'both_even)
+			'difference
+		))
+	\end{lstlisting}
+
+
+
+\end{enumerate}
