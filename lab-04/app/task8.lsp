@@ -2,19 +2,16 @@
     (
         cond 
         (
-            (equal (caar lst) name)
-            (cdar lst)
+            (assoc name lst)
+            (cdr (assoc name lst))
         )
         (
-            (equal (cdar lst) name)
-            (caar lst)
+            (rassoc name lst)
+            (car (rassoc name lst))
         )
-        (
-            T
-            (countries_capitals (cdr lst) name)
-        )
+        (T Nil)
     )
 )
 
 (print (countries_capitals 
-    (list (cons 'a1 'b1) (cons 'a2 'b2) (cons 'a3 'b3) (cons 'a4 'b4)) 'b3))
+    (list (cons 'a1 'b1) (cons 'a2 'b2) (cons 'a3 'b3) (cons 'a4 'b4)) 'a3))

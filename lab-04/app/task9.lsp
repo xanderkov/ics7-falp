@@ -2,43 +2,26 @@
     (
         cond 
         (
-            (
-                and
-                (
-                    and
+            (and
+                (and
                     (numberp (car lst))
-                    (
-                        and
-                        (numberp (cadr lst))
-                        (numberp (caddr lst))
-                    )
+                    (and (numberp (cadr lst)) (numberp (caddr lst)))
                 )
                 (numberp n)
             )
             (* (car lst) n)
         )
-        (
-            T 
-            Nil
-        )
+        (T Nil)
     )
 )
 
 (defun mult_el_b (n lst)
-    (
-        cond 
+    (cond 
         (
-            (
-                and
-                (numberp (car lst))
-                (numberp n)
-            )
+            (and (numberp (car lst)) (numberp n))
             (* (car lst) n)
         )
-        (
-            T 
-            Nil
-        )
+        (T Nil)
     )
 )
 

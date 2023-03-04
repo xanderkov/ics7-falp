@@ -31,16 +31,16 @@
 	\item  \textit{Каковы результаты вычисления следующих выражений, и почему?}
 
 	\begin{lstlisting}
-		(reverse '(a b c)) 		  --> Nil
+		(reverse '(a b c))        --> Nil
 		(reverse '(a b (c (d))))  --> Nil
-		(reverse '(a)) 			  --> (A)
-		(last '(a b c)) 	  --> (C) 
-		(last '(a)) 	  --> (A)
+		(reverse '(a))            --> (A)
+		(last '(a b c))           --> (C) 
+		(last '(a))               --> (A)
 		(last '((a b c)))         --> ((a b c))
-		(reverse ()) --> Nil
-		(reverse '((a b c))) -->  ((A B C))
-		(last '(a b (c))) --> ((c))
-		(last ()) --> Nil
+		(reverse ())              --> Nil
+		(reverse '((a b c)))      -->  ((A B C))
+		(last '(a b (c)))         --> ((c))
+		(last ())                 --> Nil
 	\end{lstlisting}
 
 	\item  \textit{Написать, по крайней мере, два варианта функции, 
@@ -264,17 +264,14 @@
 			(
 				cond 
 				(
-					(equal (caar lst) name)
-					(cdar lst)
+					(assoc name lst)
+					(cdr (assoc name lst))
 				)
 				(
-					(equal (cdar lst) name)
-					(caar lst)
+					(rassoc name lst)
+					(car (rassoc name lst))
 				)
-				(
-					T
-					(countries_capitals (cdr lst) name)
-				)
+				(T Nil)
 			)
 		)
 	\end{lstlisting}
@@ -292,25 +289,16 @@
 			(
 				cond 
 				(
-					(
-						and
-						(
-							and
+					(and
+						(and
 							(numberp (car lst))
-							(
-								and
-								(numberp (cadr lst))
-								(numberp (caddr lst))
-							)
+							(and (numberp (cadr lst)) (numberp (caddr lst)))
 						)
 						(numberp n)
 					)
 					(* (car lst) n)
 				)
-				(
-					T 
-					Nil
-				)
+				(T Nil)
 			)
 		)
 	\end{lstlisting}
@@ -318,20 +306,12 @@
 
 	\begin{lstlisting}
 		(defun mult_el_b (n lst)
-			(
-				cond 
+			(cond 
 				(
-					(
-						and
-						(numberp (car lst))
-						(numberp n)
-					)
+					(and (numberp (car lst)) (numberp n))
 					(* (car lst) n)
 				)
-				(
-					T 
-					Nil
-				)
+				(T Nil)
 			)
 		)
 	\end{lstlisting}
