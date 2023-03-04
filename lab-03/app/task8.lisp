@@ -1,14 +1,5 @@
-(defun is-first-between (first second third)
-    (
-        cond ( 
-                (and (> first second) (< first third))
-                (and (> first third) (< first second))
-            t
-            )
-            (t nil)
-            
-        
-    )
+(defun x-from-y-to-z (x y z)
+  (cond ((> x y) (cond ((< x z) T) (T Nil))) (T Nil))
+  
 )
-
-(print (is-first-between 4 3 65))
+(print (x-from-y-to-z 4 3 65))

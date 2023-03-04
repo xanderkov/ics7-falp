@@ -1,14 +1,18 @@
-(defun is-first-between (first second third)
+(defun get-last (lst)
     (
-        if (or 
-            (and (> first second) (< first third))
-            (and (> first third) (< first second))
-           )
-            t
-            nil
-        
+        nbutlast lst 1
     )
 )
 
 
-(print (is-first-between 5 4 6))
+(print (get-last '(5 6 7 8 9)))
+
+
+(defun get-without-last-reverse (lst)
+    (
+        reverse (cdr (reverse lst))
+    )
+)
+
+
+(print (get-without-last-reverse'(5 6 7 8 9)))

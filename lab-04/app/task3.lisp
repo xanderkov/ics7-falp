@@ -1,11 +1,18 @@
-(defun make-two-list (a b)
+(defun get-last (lst)
     (
-        if (< a b)
-            (list a b)
-            (list b a)
-        
+        car (last lst)
     )
 )
 
 
-(print (make-two-list 5 6))
+(print (get-last '(5 6)))
+
+
+(defun get-last-reverse (lst)
+    (
+        car (reverse lst)
+    )
+)
+
+
+(print (get-last-reverse '(5 6)))
