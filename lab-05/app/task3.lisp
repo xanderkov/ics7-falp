@@ -1,18 +1,23 @@
-(defun get-last (lst)
-    (
-        car (last lst)
+(defun multiply-lst-numbers (lst x) (
+    mapcar #'(
+                lambda (elem) (
+                    * elem x
+                )
+            ) lst
     )
 )
 
 
-(print (get-last '(5 6)))
-
-
-(defun get-last-reverse (lst)
-    (
-        car (reverse lst)
+(defun multiply-lst (lst x) (
+    mapcar #'(
+                lambda (elem) (
+                    cond 
+                        ((numberp elem) (* elem x))
+                        (T elem)
+                )
+            ) lst
     )
 )
 
 
-(print (get-last-reverse '(5 6)))
+(print (multiply-lst-numbers '(11 12 13 14) 2))

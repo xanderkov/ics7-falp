@@ -7,8 +7,16 @@
 	структурированный)}
 
 		\begin{lstlisting}
-			(setf lst1 '(a b))
-			(setf lst2 '(c d))
+			(defun minus-ten-list (lst) (
+				mapcar #'(
+							lambda (elem) (
+								cond 
+									((numberp elem) (- elem 10))
+									(T elem)
+							)
+						) lst
+				)
+			)
 		\end{lstlisting}
 
 
@@ -17,7 +25,16 @@
 	квадратов этих чисел в том же порядке.}
 
 	\begin{lstlisting}
-		(reverse '(a b c))        --> Nil
+		(defun square-lst (lst) (
+			mapcar #'(
+						lambda (elem) (
+							cond 
+								((numberp elem) (* elem elem))
+								(T elem)
+						)
+					) lst
+			)
+		)
 
 	\end{lstlisting}
 
@@ -27,11 +44,29 @@
 	б) элементы списка -- любые объекты.}
 
 	\begin{lstlisting}
-		(defun get-last (lst)
-			(
-				car (last lst)
+
+		(defun multiply-lst-numbers (lst x) (
+			mapcar #'(
+						lambda (elem) (
+							* elem x
+						)
+					) lst
 			)
 		)
+
+
+		(defun multiply-lst (lst x) (
+			mapcar #'(
+						lambda (elem) (
+							cond 
+								((numberp elem) (* elem x))
+								(T elem)
+						)
+					) lst
+			)
+		)
+
+
 	\end{lstlisting}
 
 

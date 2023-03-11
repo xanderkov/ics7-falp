@@ -1,13 +1,12 @@
-(defun square-lst (lst) (
+(defun minus-ten-list (lst) (
     mapcar #'(
                 lambda (elem) (
                     cond 
-                        ((numberp elem) (* elem elem))
+                        ((numberp elem) (- elem 10))
                         (T elem)
                 )
             ) lst
     )
 )
 
-
-(print (square-lst '(11 12 13 14 a)))
+(print (minus-ten-list '(11 12 13 14 a)))
