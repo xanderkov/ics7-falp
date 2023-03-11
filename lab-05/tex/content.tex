@@ -76,10 +76,22 @@
 	списка.}
 
 	\begin{lstlisting}
-		(defun get-last (lst)
-			(
-				nbutlast lst 1
-			)
+		(defun polyp (lst) (
+			cond ((eql 
+				(find-if-not #'oddp
+
+					(mapcar #'(
+						lambda (elem revelem) (
+							cond 
+								((eql elem revelem) 1)
+								(T 0)
+						)
+						) lst (reverse lst)
+					)
+				)
+				Nil) '(T))
+				(T Nil)
+		)
 		)
 	\end{lstlisting}
 
@@ -89,17 +101,18 @@
 	порядок которых не имеет значения.}
 	
 	\begin{lstlisting}
-		(defun swap-first-last (lst)
-			(
-				nconc 
-				(last lst)
-				(reverse 
-					(cdr 
-						(reverse (cdr lst)))
-				)
-				(list (car lst))
-			)
+		(defun set-equalp (set1 set2)
+		(
+			and (eql (length set1) (length set2))
+						(every #'(lambda (elem) 
+									(member elem set2 :test #'equal)
+								 ) set1)
+						(every #'(lambda (elem) 
+									(member elem set1 :test #'equal)
+								 ) set2)
 		)
+		)
+		
 	\end{lstlisting}
 
 	\item  \textit{Напишите функцию, select-between, которая из списка-аргумента, содержащего только
@@ -108,19 +121,17 @@
 	возрастанию (+ 2 балла)).}
 
 	\begin{lstlisting}
-		(defvar first_player)
-		(defvar second_player)
-		
-		
-		(defun bones_throw ()
-		
-			(print "Enter first bone: ")
-			(setq bone1 (read))
-			(print "Enter second bone: ")
-			(setq bone2 (read))
-			(setq ret (list bone1 bone2))
-			ret
-		
+		(defun select-between (lst l r)
+		(
+			sort (reduce #'(
+							lambda (res el) (
+								cond ((and (> el l) (< el r)) (cons el res))
+										(T res)
+				
+							)
+							)
+			lst :initial-value ()) #'<
+		)
 		)
 
 	\end{lstlisting}
@@ -128,50 +139,25 @@
 	\item  \textit{Написать функцию, вычисляющую декартово произведение двух своих списковаргументов. ( Напомним, что А х В это множество всевозможных пар (a b), где а
 	принадлежит А, принадлежит В.)}
 	\begin{lstlisting}
-		(defun get-without-last-reverse (lst)
-			(reverse (cdr (reverse lst)))
-		)
-
-
-
-		(defun st_check (lst)
-			(cond
-				(
-					(> (length lst) 1)
-					(and
-						(eq (car lst) (car (reverse lst)))
-						(st_check (cdr (get-without-last-reverse lst)))
-					)
-				)
-				(T T)
-			)
-		)
-
-
-		(defun palindrom_check (lst)
-			(st_check lst)
-		)
+		(defun combinations(lst1 lst2)
+		(mapcan #'(lambda (inner)
+					(mapcar #'(lambda (outer)
+								(list outer inner)) 
+							lst1)) 
+				lst2))
 	\end{lstlisting}
 
 	\item  \textit{Почему так реализовано reduce, в чем причина?
 	(reduce \#'+ ()) -> 0 (reduce \#'* ()) -> 1}
 	
 	\begin{lstlisting}
-		(defun countries_capitals (lst name)
-			(
-				cond 
-				(
-					(assoc name lst)
-					(cdr (assoc name lst))
-				)
-				(
-					(rassoc name lst)
-					(car (rassoc name lst))
-				)
-				(T Nil)
-			)
-		)
+		(reduce #'+ ()) -> 0
+		(reduce #'* ()) -> 1
 	\end{lstlisting}
+
+	начальное занчение функции + --- 0
+
+	начальное значение функции * --- 1
 
 
 
@@ -181,20 +167,16 @@
 	 ((1 2) (3 4)) -> 4.}
 
 	\begin{lstlisting}
-		(defun mult_el_a (n lst)
-			(
-				cond 
-				(
-					(and
-						(and
-							(numberp (car lst))
-							(and (numberp (cadr lst)) (numberp (caddr lst)))
+		(defun list-of-list (lst)
+			(apply #'+ (
+						mapcar #'(
+							lambda (elem) (
+								cond ((listp elem) (list-of-list elem))
+									(t 1)
+							)
 						)
-						(numberp n)
+						lst
 					)
-					(* (car lst) n)
-				)
-				(T Nil)
 			)
 		)
 	\end{lstlisting}

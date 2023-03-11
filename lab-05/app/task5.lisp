@@ -1,18 +1,15 @@
-(defun swap-first-last (lst)
-    (
-        nconc 
-        (last lst)
-        (reverse 
-            (cdr 
-                (reverse 
-                    (cdr lst)
-                )
-            )
-        )
-        (list (car lst))
-    )
+(defun set-equalp (set1 set2)
+(
+    and (eql (length set1) (length set2))
+                (every #'(lambda (elem) 
+                            (member elem set2 :test #'equal)
+                         ) set1)
+                (every #'(lambda (elem) 
+                            (member elem set1 :test #'equal)
+                         ) set2)
+)
 )
 
 
-(print (swap-first-last '(5 6 7 8 9)))
-every
+
+(print (set-equalp '(1 2 3) '(1 2 3)))

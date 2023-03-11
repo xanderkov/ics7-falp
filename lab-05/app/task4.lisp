@@ -1,20 +1,20 @@
-(defun get-last (lst)
-    (
-        nbutlast lst 1
-    )
+(defun polyp (lst) (
+    cond ((eql 
+        (find-if-not #'oddp
+
+            (mapcar #'(
+                lambda (elem revelem) (
+                    cond 
+                        ((eql elem revelem) 1)
+                        (T 0)
+                )
+                ) lst (reverse lst)
+            )
+        )
+        Nil) (T))
+        (T Nil)
+)
 )
 
 
-(print (get-last '(5 6 7 8 9)))
-
-
-(defun get-without-last-reverse (lst)
-    (
-        reverse (cdr (reverse lst))
-    )
-)
-
-
-(print (get-without-last-reverse'(5 6 7 8 9)))
-
-mapevery
+(print (polyp '(1 2 3 2 1)))

@@ -1,28 +1,14 @@
-(defun mult_el_a (n lst)
-    (
-        cond 
-        (
-            (and
-                (and
-                    (numberp (car lst))
-                    (and (numberp (cadr lst)) (numberp (caddr lst)))
+(defun list-of-list (lst)
+    (apply #'+ (
+                mapcar #'(
+                    lambda (elem) (
+                        cond ((listp elem) (list-of-list elem))
+                              (t 1)
+                    )
                 )
-                (numberp n)
+                lst
             )
-            (* (car lst) n)
-        )
-        (T Nil)
     )
 )
 
-(defun mult_el_b (n lst)
-    (cond 
-        (
-            (and (numberp (car lst)) (numberp n))
-            (* (car lst) n)
-        )
-        (T Nil)
-    )
-)
-
-(print (mult_el_a 5 '(1 2 3)))
+(print (list-of-list  '(1 2 (3))))
