@@ -1,0 +1,81 @@
+
+\chapter{Практические задания}
+
+\begin{enumerate}[wide=0pt]
+
+	\item \textit{1}
+
+		\begin{lstlisting}
+			(defun my-reverse (lst &optional (revlst ()))
+				(
+					cond ((null lst) revlst)
+						(T (my-reverse (cdr lst) (cons (car lst) revlst)))
+				)
+			)
+
+		\end{lstlisting}
+
+
+	\item  \textit{2}
+
+	\begin{lstlisting}
+		(defun get-first-elem (lst)
+			(
+				cond (  
+					(null (car lst)) (get-first-elem (cdr lst))
+					(t (car lst)))
+			)
+		)
+	\end{lstlisting}
+
+	\item  \textit{3}
+
+	\begin{lstlisting}
+		(defun mult_el_a (n lst)
+			(
+				cond 
+				(
+					(null lst) nil)
+					((numberp (car lst)) (cons (* (car lst) n) (mult_el_a (cdr lst) n)))
+					((listp (car lst)) (cons (mult_el_a (car lst) n) (mult_el_a (cdr lst) n)))
+					(t (cons (car lst) (mult_el_a (cdr lst) )))
+			)
+		
+		
+		)   
+	
+	\end{lstlisting}
+
+	\item  \textit{4}
+
+	\begin{lstlisting}
+		(defun select-between (lst l r &optional (dump ()))
+		(
+		
+			sort (cond ((null lst) dump)
+						(t (cond ((and (> (car lst) l) (< (car lst) r)) (select-between (cdr lst) l r (cons (car lst) dump)))
+								 (t (select-between (cdr lst) l r dump))
+							)
+						)
+				 ) #'<
+		)
+		)
+	\end{lstlisting}
+
+	\item  \textit{5}
+	
+	\begin{lstlisting}
+		(defun rec-add-structed (lst &optional (acc 0))
+			(cond ((null lst) acc)
+				((numberp (car lst)) (rec-add-structed (cdr lst) (+ acc (car lst))))
+				((consp (car lst)) (rec-add-structed (cdr lst) (rec-add-structed (car lst) acc)))
+				(t (rec-add-structed (cdr lst) acc))
+			)
+		)
+	
+	\end{lstlisting}
+
+
+
+
+\end{enumerate}

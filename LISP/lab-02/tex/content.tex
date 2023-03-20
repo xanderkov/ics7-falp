@@ -129,10 +129,10 @@
 
 \begin{enumerate}[label=\arabic*)]
 	\item \lstinline {(list 'cons t NIL)} --- (cons t NIL)
-	\item \lstinline {(eval (eval (list 'cons t NIL)))} --- Переменная t не определена
-	\item \lstinline {(apply #cons "(t NIL))} --- t
-	\item \lstinline {(list 'eval NIL)} --- Неподдерживаемый синтаксис: \#cons
-	\item \lstinline {(eval (list 'cons t NIL))} --- (eval NIL)
+	\item \lstinline {(eval (eval (list 'cons t NIL)))} --- Пер(еменная t не определена
+	\item \lstinline {(apply #cons "(t NIL))} --- Неподдерживаемый синтаксис: \#cons
+	\item \lstinline {(list 'eval NIL)} --- (eval NIL)
+	\item \lstinline {(eval (list 'cons t NIL))} --- (T)
 	\item \lstinline {(eval NIL)} --- NIL
 	\item \lstinline {(eval (list 'eval NIL))} --- NIL
 
