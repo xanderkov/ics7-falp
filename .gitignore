@@ -329,3 +329,4 @@ target
 
 __pycache__
 tstex_modules
+*.BAK
