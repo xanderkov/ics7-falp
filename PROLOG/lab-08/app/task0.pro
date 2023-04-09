@@ -4,14 +4,11 @@ domains
 	city = string	
 	street = string
 	home = string
-	adress = adr(string, string, integer, integer)
-	
-
+	adress = adr(string, string, integer, integer) 
 	
 predicates
 	record(string, integer, adress)
 	auto(string, string, string, integer, string)
-	question(string, string, string, integer, string, integer, string)
 
 clauses
 	record("Andrey", 123, adr("Moscow", "Baumanskaya", 3, 31)).
@@ -25,11 +22,9 @@ clauses
 	auto("Meytimir", "Ferrari", "red", 10, "an923l").
 	auto("Alexander", "BMV", "white", 607, "gu666y").
 	auto("Alexey", "Reno Logan", "brown", 2, "di420e").
-	
-	question(LastName, Name, Color, Price, Number, Phone, Town):-
-		auto(LastName, Name, Color, Price, Number), record(LastName, Phone, adr(Town, _, _, _)).
 
 goal
-
-	% auto(Name, "BMV", _, _, _), record(Name, Phone, adr(Town, _, _, _)).
-	question(Name, "BMV", _, _, _, Phone, Town).
+	% adress(Name, Phone, City, Street, Home).
+	% adress(_, _, _, _, _).
+	% adress("Andrey", "123", "Moscow", "Baumanskaya", "3").
+	auto(Name, "BMV", _, _, _), record(Name, Phone, adr(Town, _, _, _)).
