@@ -1,0 +1,193 @@
+\usepackage{cmap} % Улучшенный поиск русских слов в полученном pdf-файле
+\usepackage[T2A]{fontenc} % Поддержка русских букв
+\usepackage[utf8]{inputenc} % Кодировка utf8
+\usepackage[english,russian]{babel} % Языки: русский, английский
+%\usepackage{pscyr} % Нормальные шрифты
+\usepackage{enumitem}
+
+
+\usepackage[14pt]{extsizes}
+
+\usepackage{graphicx}
+\usepackage{multirow}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+\usepackage{caption}
+\captionsetup{labelsep=endash}
+\captionsetup[figure]{name={Рисунок}}
+\captionsetup[subtable]{labelformat=simple}
+\captionsetup[subfigure]{labelformat=simple}
+\renewcommand{\thesubtable}{\text{Таблица }\arabic{chapter}\text{.}\arabic{table}\text{.}\arabic{subtable}\text{ --}}
+\renewcommand{\thesubfigure}{\text{Рисунок }\arabic{chapter}\text{.}\arabic{figure}\text{.}\arabic{subfigure}\text{ --}}
+
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{left=30mm}
+\geometry{right=15mm}
+\geometry{top=20mm}
+\geometry{bottom=20mm}
+
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalsize\bfseries}
+{\thesection}
+{1em}{}
+\titlespacing*{\chapter}{0pt}{-30pt}{8pt}
+\titlespacing*{\section}{\parindent}{*4}{*4}
+\titlespacing*{\subsection}{\parindent}{*4}{*4}
+
+\usepackage{setspace}
+\onehalfspacing % Полуторный интервал
+
+\frenchspacing
+\usepackage{indentfirst} % Красная строка после заголовка
+\setlength\parindent{1.25cm}
+
+
+\usepackage{titlesec}
+\titleformat{\chapter}{\LARGE\bfseries}{\thechapter}{20pt}{\LARGE\bfseries}
+\titleformat{\section}{\Large\bfseries}{\thesection}{20pt}{\Large\bfseries}
+
+
+% Настройки оглавления
+\usepackage{xcolor}
+\usepackage{multirow}
+
+\usepackage[pdftex]{hyperref} % Гиперссылки
+\hypersetup{hidelinks}
+
+% Листинги 
+\usepackage{listings}
+
+\definecolor{darkgray}{gray}{0.15}
+
+\lstset{
+	language=lisp, % выбор языка для подсветки
+	basicstyle=\small\sffamily, % размер и начертание шрифта для подсветки кода
+	numbers=left, % где поставить нумерацию строк (слева\справа)
+	%numberstyle=, % размер шрифта для номеров строк
+	stepnumber=1, % размер шага между двумя номерами строк
+	numbersep=5pt, % как далеко отстоят номера строк от подсвечиваемого кода
+	frame=single, % рисовать рамку вокруг кода
+	tabsize=2, % размер табуляции по умолчанию равен 4 пробелам
+	captionpos=t, % позиция заголовка вверху [t] или внизу [b]
+	breaklines=true,
+	breakatwhitespace=true, % переносить строки только если есть пробел
+	backgroundcolor=\color{white},
+	keywordstyle=\color{blue}
+}
+
+
+% для квадратных скобок
+\usepackage{array}
+\DeclareMathOperator{\rank}{rank}
+\makeatletter
+\newenvironment{sqcases}{%
+	\matrix@check\sqcases\env@sqcases
+}{%
+	\endarray\right.%
+}
+\def\env@sqcases{%
+	\let\@ifnextchar\new@ifnextchar
+	\left\lbrack
+	\def\arraystretch{1.2}%
+	\array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+
+
+
+\usepackage[justification=centering]{caption} % Настройка подписей float объектов
+
+
+\usepackage{csvsimple}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+% для матриц
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+	\edef\arraystretch{#1}%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{*\c@MaxMatrixCols c}}
+\makeatother
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\newcommand{\img}[3] {
+	\begin{figure}[h!]
+		\center{\includegraphics[height=#1]{inc/img/#2}}
+		\caption{#3}
+		\label{img:#2}
+	\end{figure}
+}
+\newcommand{\boximg}[3] {
+	\begin{figure}[h]
+		\center{\fbox{\includegraphics[height=#1]{inc/img/#2}}}
+		\caption{#3}
+		\label{img:#2}
+	\end{figure}
+}
+
+
+
+\usepackage[justification=centering]{caption} % Настройка подписей float объектов
+
+
+\usepackage{csvsimple}
+
+
+\setcounter{page}{2}
+\usepackage{threeparttable}
+\usepackage{dcolumn}
+\usepackage{multirow}
+\usepackage{longtable}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\makeatletter
+\makeatother
+
+\algrenewcommand\algorithmicwhile{\textbf{До тех пока}}
+\algrenewcommand\algorithmicdo{\textbf{выполнять}}
+\algrenewcommand\algorithmicrepeat{\textbf{Повторять}}
+\algrenewcommand\algorithmicuntil{\textbf{Пока выполняется}}
+\algrenewcommand\algorithmicend{\textbf{Конец}}
+\algrenewcommand\algorithmicif{\textbf{Если}}
+\algrenewcommand\algorithmicelse{\textbf{иначе}}
+\algrenewcommand\algorithmicthen{\textbf{тогда}}
+\algrenewcommand\algorithmicfor{\textbf{Цикл}}
+\algrenewcommand\algorithmicforall{\textbf{Выполнить для всех}}
+\algrenewcommand\algorithmicfunction{\textbf{Функция}}
+\algrenewcommand\algorithmicprocedure{\textbf{Процедура}}
+\algrenewcommand\algorithmicloop{\textbf{Зациклить}}
+\algrenewcommand\algorithmicrequire{\textbf{Условия:}}
+\algrenewcommand\algorithmicensure{\textbf{Обеспечивающие условия:}}
+\algrenewcommand\algorithmicreturn{\textbf{Возвратить}}
+\algrenewtext{EndWhile}{\textbf{Конец цикла}}
+\algrenewtext{EndLoop}{\textbf{Конец зацикливания}}
+\algrenewtext{EndFor}{\textbf{Конец цикла}}
+\algrenewtext{EndFunction}{\textbf{Конец функции}}
+\algrenewtext{EndProcedure}{\textbf{Конец процедуры}}
+\algrenewtext{EndIf}{\textbf{Конец условия}}
+\algrenewtext{EndFor}{\textbf{Конец цикла}}
+\algrenewtext{BeginAlgorithm}{\textbf{Начало алгоритма}}
+\algrenewtext{EndAlgorithm}{\textbf{Конец алгоритма}}
+\algrenewtext{BeginBlock}{\textbf{Начало блока. }}
+\algrenewtext{EndBlock}{\textbf{Конец блока}}
+\algrenewtext{ElsIf}{\textbf{иначе если }}
+\floatname{algorithm}{Алгоритм}
+
+\bibliographystyle{utf8gost705u.bst}
+\usepackage[backend=biber,
+sorting=none,
+]{biblatex} 
+
+\usepackage{tasks}
+
+\usepackage{placeins}
