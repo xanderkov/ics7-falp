@@ -1,24 +1,37 @@
-factorialHelper(N, Res, Acc) :- N =< 1, Res is Acc, !.
-factorialHelper(N, Res, Acc) :- UpdAcc = Acc * N, UpdN is N - 1, factorialHelper(UpdN, Res, UpdAcc).
-factorial(N, Res) :- factorialHelper(N, Res, 1).
+list_length(List, Length) :- list_length(List, 0, Length).
+list_length([], Acc, Acc) :- !.
+list_length([_|T], Acc, Length) :- !,
+    NewAcc is Acc + 1,
+    list_length(T, NewAcc, Length).
 
-fibHelper(N, Res, _, Acc) :- N =< 2, Res is Acc.
-fibHelper(N, Res, Prev, Acc) :- UpdN is N - 1, UpdAcc is Prev + Acc, fibHelper(UpdN, Res, Acc, UpdAcc).
-fib(N, Res) :- fibHelper(N, Res, 1, 1).
+sum_list(List, Sum) :- sum_list(List, 0, Sum), !.
+sum_list([], Acc, Acc) :- !.
+sum_list([H|T], Acc, Sum) :- 
+    NewAcc is Acc + H,
+    sum_list(T, NewAcc, Sum).
 
+sum_even_positions(List, Sum) :- !,
+    sum_even_positions(List, 0, Sum).
 
-Append([_|T], List, [_|Res]) :- Append(T, List, Res), !.
-Append([], List, List).
-ListGreaterThen([H|T], N, [H|Res]) :- H > N, !, ListGreaterThen(T, N, Res), !.
-ListGreaterThen([_|T], N, Res) :- ListGreaterThen(T, N, Res), !.
-ListGreaterThen([], _, []).
-ListLeaveOdd([H|[_|T]], [H|Res]) :- ListLeaveOdd(T, Res), !.
-ListLeaveOdd(List, List).
-ListRemoveElem([H|T], Item, Res) :- Item = H, !, ListRemoveElem(T, Item, Res).
-ListRemoveElem([H|T], Item, [H|Res]) :- ListRemoveElem(T, Item, Res), !.
-ListRemoveElem(List, _, List).
-ListIncludes([_|T], Item) :- ListIncludes(T, Item), !.
-ListIncludes([H|_], H).
-ListToSet([H|T], Res) :- ListIncludes(T, H), !, ListToSet(T, Res).
-ListToSet([H|T], [H|Res]) :- ListToSet(T, Res), !.
-ListToSet(List, List).
+sum_even_positions([], Sum, Sum) :- !.
+sum_even_positions([_], Sum, Sum).
+sum_even_positions([_, X|T], Acc, Sum) :-
+    NewAcc is Acc + X,
+    sum_even_positions(T, NewAcc, Sum).
+
+filter_gt_y([], _, []) :- !.
+filter_gt_y([X|Xs], Y, [X|Ys]) :- X > Y, !, filter_gt_y(Xs, Y, Ys).
+filter_gt_y([X|Xs], Y, Ys) :- X =< Y, !, filter_gt_y(Xs, Y, Ys).
+
+delete_elem_once(_, [], []) :- !.
+delete_elem_once(X, [X|Tail], Tail) :- !.
+delete_elem_once(X, [Y|Tail], [Y|Tail1]) :-
+    delete_elem_once(X, Tail, Tail1).
+
+delete_all(_, [], []) :- !.
+delete_all(X, [X|Tail], Result) :- !,
+    delete_all(X, Tail, Result).
+delete_all(X, [Y|Tail], [Y|Tail1]) :- delete_all(X, Tail, Tail1).
+
+concat([], L, L) :- !.
+concat([H|T], L, [H|Result]) :- concat(T, L, Result).
